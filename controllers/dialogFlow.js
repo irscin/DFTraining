@@ -1,6 +1,7 @@
 const dialogFlowRouter=require('express').Router()
 const axios = require('axios')
 const news = require('../models/news')
+const config=require('../utils/config')
 const News = require('../models/news')
 
 dialogFlowRouter.post('/', async(req, res)=>{
@@ -33,7 +34,7 @@ const sendTextMessage = async (message, id) => {
 }
 
 const sendJSON = async (JSON)=>{
-    await axios.post('https://graph.facebook.com/v8.0/me/messages?access_token=EAAG0LkkACtwBAEjfUTYBEYSBIv7O57XynEcQeICVGNO6ATR7ahgyfguduK2y0OKcMGhI4B3YMoeBdX2YwzsmZAiHHon7waY4AtSacAwlLCZBhKQu67mA26b5tbhZAZBrgzotL0C4XC6ssVPo4QNwLwut8ZCZCqmyyqUZADno8GmF7XEIZBCa15joSIdsPqAqa5kZD', JSON)
+    await axios.post(config.FACEBOOK_KEY, JSON)
 }
 
 const hello = async ()=>{
